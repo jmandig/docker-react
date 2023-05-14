@@ -6,6 +6,7 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+COPY nginx.conf /etc/nginx/conf.d/configfile.template
 COPY --from=builder /app/build /usr/share/nginx/html
 # the ../html dir is where you can host things on the nginx server
 # /app/build is all the stuff we want to copy over
